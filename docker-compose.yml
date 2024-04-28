@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  bot:
+    networks:
+      - default
+    build: .
+    volumes:
+      - ./logs.log:/bot/logs.log
+      - ./united_batchery_bot:/bot/united_batchery_bot
+      - ./.env:/bot/united_batchery_bot/.env:ro
+    depends_on:
+      - redis
+    
+  redis:
+    networks:
+      - default
+    image: redis
+    volumes:
+      - redisdata:/root/redis
+
+volumes:
+  redisdata:
+
+networks:
+  default:

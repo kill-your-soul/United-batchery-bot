@@ -18,7 +18,7 @@ async def create_main_keyboard() -> ReplyKeyboardMarkup:
 
 async def menu_keyboard() -> ReplyKeyboardMarkup:
     builder = ReplyKeyboardBuilder()
-    builder.button(text="Меню", web_app=WebAppInfo(url="https://68b2-91-238-230-54.ngrok-free.app")).button(
+    builder.button(text="Меню", web_app=WebAppInfo(url="https://48fb-95-55-57-208.ngrok-free.app")).button(
         text="Построить маршрут"
     ).button(text="Забронировать стол").button(
         text="Заказать доставку", web_app=WebAppInfo(url="https://unitedbutchers.delivery/"),

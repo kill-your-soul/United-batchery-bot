@@ -2,11 +2,12 @@ import asyncio
 import logging
 from pathlib import Path
 
+import handlers
 from aiogram import Bot, Dispatcher
 from aiogram.fsm.storage.redis import Redis, RedisStorage
 from core.config import settings
 from loguru import logger
-import handlers
+
 
 def setup_handlers(dp: Dispatcher) -> None:
     dp.include_router(handlers.setup_handlers())

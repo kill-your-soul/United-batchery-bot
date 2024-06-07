@@ -1,5 +1,10 @@
 # United batchery bot
 
+## Минимальные систеные требования
+1. 20 gb ssd/hdd.
+2. 512mb ram
+3. 1 cpu
+
 ## Зависимости
 1. Docker compose
 

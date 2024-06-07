@@ -21,22 +21,59 @@
 Пример `nginx.conf`
 
     ```conf
-    server {
-        listen 80;
-        root /home/user/united_batchery_bot/miniapp;
+server {
+    listen 80;
+    server_name ваш_домен;
+    return 301 https://$server_name$request_uri;
+}
 
-        server_name ваш_домен;
+server {
+    listen 443 ssl;
+    server_name ваш_домен;
 
-        location / {
-            proxy_set_header Host $host;
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header X-Forwarded-Proto $scheme;
-        }
+    ssl_certificate /path/to/your/fullchain.pem;
+    ssl_certificate_key /path/to/your/privkey.pem;
 
-        location / {
-            index index.html
-        }
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_prefer_server_ciphers on;
+    ssl_ciphers HIGH:!aNULL:!MD5;
+
+    # Root path to the main app directory
+    root /home/user/united_batchery_bot/miniapp;
+
+    # General location block for the main root
+    location / {
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        index index.html;
     }
+
+    # Location block for Просвещения 46
+    location /prosvet {
+        alias /home/user/united_batchery_bot/miniapp/prosvet;
+        index index.html;
+    }
+
+    # Location block for Восстания, 26
+    location /vosstania {
+        alias /home/user/united_batchery_bot/miniapp/vosstania;
+        index index.html;
+    }
+
+    # Static files
+    location /imgs {
+        alias /home/user/united_batchery_bot/miniapp/imgs;
+    }
+
+    location /prosvet/images {
+        alias /home/user/united_batchery_bot/miniapp/prosvet/images;
+    }
+
+    location /vosstania/imgs {
+        alias /home/user/united_batchery_bot/miniapp/vosstania/imgs;
+    }
+}
 
     ```

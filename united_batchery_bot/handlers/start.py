@@ -21,9 +21,9 @@ async def command_start_handler(message: Message, state: FSMContext) -> None:
 async def options_handler(message: Message, state: FSMContext) -> None:
     # keyboard = await menu_keyboard()
     if message.text == "Просвещения 46":
-        keyboard = await menu_keyboard(settings.DOMAIN + "/prosvet")
+        keyboard = await menu_keyboard(settings.DOMAIN + "/vosstania")
     if message.text == "Европейский 21":
-        keyboard = await menu_keyboard(settings.DOMAIN + "/")
+        keyboard = await menu_keyboard(settings.DOMAIN + "/vosstania")
     if message.text == "Героев 31":
         keyboard = await menu_keyboard(settings.DOMAIN + "/")
     if message.text == "Восстания, 26":

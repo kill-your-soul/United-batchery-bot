@@ -20,11 +20,11 @@ async def command_start_handler(message: Message, state: FSMContext) -> None:
 
 async def options_handler(message: Message, state: FSMContext) -> None:
     # keyboard = await menu_keyboard()
-    if message.text == "Просвещения 46":
+    if message.text == "Просвещения, 46":
         keyboard = await menu_keyboard(settings.DOMAIN + "/vosstania")
-    if message.text == "Европейский 21":
+    if message.text == "Европейский, 21":
         keyboard = await menu_keyboard(settings.DOMAIN + "/vosstania")
-    if message.text == "Героев 31":
+    if message.text == "Героев, 31":
         keyboard = await menu_keyboard(settings.DOMAIN + "/")
     if message.text == "Восстания, 26":
         keyboard = await keyboard_for_vosstania(settings.DOMAIN + "/vosstania")
@@ -41,11 +41,11 @@ async def menu_handler(message: Message, state: FSMContext) -> None:
 
 async def chat(message: Message, state: FSMContext) -> None:
     logger.debug("Пользователь открыл чаты")
-    if (await state.get_data())["restaurant"] == "Просвещения 46":
+    if (await state.get_data())["restaurant"] == "Просвещения, 46":
         await message.answer("https://t.me/+8i33QxklO1c5ZWFi")
-    elif (await state.get_data())["restaurant"] == "Европейский 21":
+    elif (await state.get_data())["restaurant"] == "Европейский, 21":
         await message.answer("https://t.me/+s0ZBKNHThoNkMTUy")
-    elif (await state.get_data())["restaurant"] == "Героев 31":
+    elif (await state.get_data())["restaurant"] == "Героев, 31":
         await message.answer("https://t.me/unitedbutchers_geroev")
     # await message.answer("ссылки")
 
@@ -79,17 +79,17 @@ async def book_table_end(message: Message, state: FSMContext) -> None:
     info_booking = await state.get_data()
     # await message.answer(text=str(info_booking))
     answer = f"Новая заявка\n\nДень: {info_booking['day']}\nВремя: {info_booking['time']}\nКоличество гостей: {info_booking['guests']}\nНомер: {info_booking['number']}"  # noqa: E501
-    if info_booking["restaurant"] == "Просвещения 46":
+    if info_booking["restaurant"] == "Просвещения, 46":
         await message.bot.send_message(
             -1001687001589,
             answer,
         )
-    elif info_booking["restaurant"] == "Европейский 21":
+    elif info_booking["restaurant"] == "Европейский, 21":
         await message.bot.send_message(
             -1001854938336,
             answer,
         )
-    elif info_booking["restaurant"] == "Героев 31":
+    elif info_booking["restaurant"] == "Героев, 31":
         await message.bot.send_message(
             -1002141952251,
             answer,

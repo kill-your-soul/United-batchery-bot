@@ -55,7 +55,7 @@ server {
         index index.html;
     }
 
-    # Location block for Просвещения 46
+    # Location block for Просвещения, 46
     location /prosvet {
         alias /home/user/united_batchery_bot/miniapp/prosvet;
         index index.html;

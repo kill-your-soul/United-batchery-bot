@@ -9,8 +9,8 @@ from aiogram.utils.keyboard import (
 
 async def create_main_keyboard() -> ReplyKeyboardMarkup:
     builder = ReplyKeyboardBuilder()
-    builder.button(text="Восстания, 26").button(text="Просвещения 46").button(text="Европейский 21").button(
-        text="Героев 31"  # noqa: COM812
+    builder.button(text="Восстания, 26").button(text="Просвещения, 46").button(text="Европейский, 21").button(
+        text="Героев, 31"  # noqa: COM812
     )
     builder.adjust(2, 2)
     return builder.as_markup(one_time_keyboard=True, resize_keyboard=True)

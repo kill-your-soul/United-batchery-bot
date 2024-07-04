@@ -19,7 +19,7 @@ async def create_main_keyboard() -> ReplyKeyboardMarkup:
 async def menu_keyboard(url: str) -> ReplyKeyboardMarkup:
     builder = ReplyKeyboardBuilder()
     builder.button(text="Меню", web_app=WebAppInfo(url=url)).button(
-        text="Построить маршрут"
+        text="Построить маршрут",
     ).button(text="Забронировать стол").button(
         text="Заказать доставку", web_app=WebAppInfo(url="https://unitedbutchers.delivery/"),
     ).button(text="Чат")
@@ -30,9 +30,11 @@ async def menu_keyboard(url: str) -> ReplyKeyboardMarkup:
 async def keyboard_for_vosstania(url: str) -> ReplyKeyboardMarkup:
     builder = ReplyKeyboardBuilder()
     builder.button(text="Меню", web_app=WebAppInfo(url=url)).button(
-        text="Построить маршрут"
-    ).button(text="Забронировать стол").button(
-        text="Заказать доставку", web_app=WebAppInfo(url="https://unitedbutchers.delivery/"),
-    )
-    builder.adjust(2, 2)
+        text="Построить маршрут",
+    ).button(text="Забронировать стол")
+    # .button(
+    #     text="Заказать доставку",
+    #     web_app=WebAppInfo(url="https://unitedbutchers.delivery/"),
+    # )
+    builder.adjust(2, 1)
     return builder.as_markup(one_time_keyboard=True, resize_keyboard=True)

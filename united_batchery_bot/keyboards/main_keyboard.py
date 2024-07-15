@@ -38,3 +38,10 @@ async def keyboard_for_vosstania(url: str) -> ReplyKeyboardMarkup:
     # )
     builder.adjust(2, 1)
     return builder.as_markup(one_time_keyboard=True, resize_keyboard=True)
+
+async def keyboard_for_end() -> ReplyKeyboardMarkup:
+    builder = ReplyKeyboardBuilder()
+    builder.button(text="В начало")
+    builder.adjust(1)
+
+    return builder.as_markup(one_time_keyboard=True, resize_keyboard=True)

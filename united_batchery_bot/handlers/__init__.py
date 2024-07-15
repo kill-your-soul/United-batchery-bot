@@ -20,4 +20,5 @@ def setup_handlers() -> Router:
     router.message.register(start.book_table_number, StateFilter(Booking.amount_of_guests), F.text)
     router.message.register(start.book_table_end, StateFilter(Booking.number), F.text)
     router.message.register(start.chat, StateFilter(Restaurant.menu), F.text == "Чат")
+    router.message.register(start.end, F.text == "В начало")
     return router

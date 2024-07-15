@@ -1,7 +1,7 @@
 from aiogram.fsm.context import FSMContext
 from aiogram.types import Message
 from core.config import settings
-from keyboards.main_keyboard import create_main_keyboard, keyboard_for_vosstania, menu_keyboard
+from keyboards.main_keyboard import create_main_keyboard, keyboard_for_end, keyboard_for_vosstania, menu_keyboard
 from loguru import logger
 from states.start import Restaurant
 from states.usermode import Booking
@@ -101,8 +101,10 @@ async def book_table_end(message: Message, state: FSMContext) -> None:
         )
     logger.debug(info_booking)
     await state.set_state(Restaurant.menu)
+    keyboard = await keyboard_for_end()
     await message.answer(
         "Спасибо за оставленную заявку, наш менеджер перезвонит вам в ближайшее время для подтверждения брони!\n\n До встречи",  # noqa: E501
+        reply_markup=keyboard,
     )
 
 
@@ -110,3 +112,6 @@ async def geo_handler(message: Message, state: FSMContext) -> None:
     location = locations[(await state.get_data())["restaurant"]]
     await message.answer("Ждем вас в гостях по адресу")
     await message.answer_location(latitude=location["latitude"], longitude=location["longitude"])
+
+async def end(message: Message, state: FSMContext) -> None:
+    await command_start_handler(message, state)

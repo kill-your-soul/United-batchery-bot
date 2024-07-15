@@ -7,7 +7,7 @@ class Settings(BaseSettings):
     )
     TOKEN: str
     REDIS_URI: str
-    DOMAIN: str
+    DOMAIN: str = "localhost"
 
 
 settings = Settings()
